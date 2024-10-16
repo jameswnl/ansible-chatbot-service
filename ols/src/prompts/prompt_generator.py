@@ -16,7 +16,9 @@ import importlib
 customize_package = 'ols.src.prompts.prompts'
 if config.ols_config.customize:
     customize_package = f"{config.ols_config.customize}.prompts"
+    print(f'customized: package={customize_packageP}')
 customize = importlib.import_module(customize_package)
+print(f'QUERY_SYSTEM_INSTRUCTION: {customize.QUERY_SYSTEM_INSTRUCTION}')
 
 def restructure_rag_context_pre(text: str, model: str) -> str:
     """Restructure rag text - pre truncation."""
