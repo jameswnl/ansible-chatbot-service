@@ -329,6 +329,7 @@ class ProviderConfig(BaseModel):
             if type(certificate_directory) == type(True):
                 self.certificates_store = certificate_directory
             else:
+
                 self.certificates_store = os.path.join(
                     certificate_directory, constants.CERTIFICATE_STORAGE_FILENAME
                 )
