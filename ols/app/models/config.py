@@ -329,9 +329,14 @@ class ProviderConfig(BaseModel):
             self.deployment_name = data.get("deployment_name", None)
             # note: it can be overwritten in azure_config
         if self.type in (constants.PROVIDER_RHOAI_VLLM, constants.PROVIDER_RHELAI_VLLM):
-            self.certificates_store = os.path.join(
-                certificate_directory, constants.CERTIFICATE_STORAGE_FILENAME
-            )
+            print(f"self.certificates_store == {certificate_directory}")
+            if certificate_directory.lower() == 'false':
+                self.certificates_store = False
+                print(f"self.certificates_store => verify off")
+            else:
+                self.certificates_store = os.path.join(
+                    certificate_directory, constants.CERTIFICATE_STORAGE_FILENAME
+                )
 
     def set_provider_type(self, data: dict) -> None:
         """Set the provider type."""
@@ -902,8 +907,8 @@ class OLSConfig(BaseModel):
             return
 
         self.conversation_cache = ConversationCacheConfig(
-            data.get("conversation_cache", None)
-        )
+            data.get("conversation_cache")
+        ) if data.get("conversation_cache") else None
         self.logging_config = LoggingConfig(**data.get("logging_config", {}))
         if data.get("reference_content") is not None:
             self.reference_content = ReferenceContent(data.get("reference_content"))
