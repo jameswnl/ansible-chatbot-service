@@ -40,9 +40,11 @@ customize_package = 'ols.utils.keywords'
 if config.ols_config.customize:
     keywords = importlib.import_module(f"{config.ols_config.customize}.keywords")
     prompts = importlib.import_module(f"{config.ols_config.customize}.prompts")
+    print(f'customized: {prompts.INVALID_QUERY_RESP}')
 else:
     keywords = importlib.import_module('ols.utils.keywords')
     prompts = importlib.import_module('ols.src.prompts.prompts')
+    print(f'NOT-customized: {prompts.INVALID_QUERY_RESP}')
 
 logger = logging.getLogger(__name__)
 
