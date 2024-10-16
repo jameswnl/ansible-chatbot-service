@@ -16,7 +16,7 @@ import importlib
 customize_package = 'ols.src.prompts.prompts'
 if config.ols_config.customize:
     customize_package = f"{config.ols_config.customize}.prompts"
-    print(f'customized: package={customize_packageP}')
+    print(f'customized: package={customize_package}')
 customize = importlib.import_module(customize_package)
 print(f'QUERY_SYSTEM_INSTRUCTION: {customize.QUERY_SYSTEM_INSTRUCTION}')
 
@@ -61,6 +61,7 @@ class GeneratePrompt:
         self._rag_context = rag_context
         self._history = history
         self._sys_instruction = system_instruction
+        print("system_instruction: {system_instruction}")
 
     def _generate_prompt_gpt(self) -> tuple[ChatPromptTemplate, dict]:
         """Generate prompt for GPT."""
