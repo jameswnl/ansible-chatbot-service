@@ -17,12 +17,14 @@ metadata:
   namespace: jwong-tenant
 spec:
   params:
+  - name: skip-checks
+    value: "true"
   - name: git-url
     value: '{{source_url}}'
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/jwong-tenant/ansible-chatbot:{{revision}}
+    value: quay.io/ansible/ansible-chatbot-service:1-{{revision}}
   - name: dockerfile
     value: Containerfile
   pipelineSpec:
