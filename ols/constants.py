@@ -18,6 +18,13 @@ SUBJECT_REJECTED = "REJECTED"
 SUBJECT_ALLOWED = "ALLOWED"
 
 
+# Default responses
+INVALID_QUERY_RESP = (
+    "Hi, I'm the Ansible Lightspeed assistant, I can help you with questions about Ansible, "
+    "please ask me a question related to Ansible."
+)
+
+
 # providers
 PROVIDER_BAM = "bam"
 PROVIDER_OPENAI = "openai"
@@ -37,8 +44,6 @@ SUPPORTED_PROVIDER_TYPES = frozenset(
         PROVIDER_FAKE,
     }
 )
-
-DEFAULT_AZURE_API_VERSION = "2024-02-15-preview"
 
 # models
 
