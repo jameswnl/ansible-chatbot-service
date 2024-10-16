@@ -892,6 +892,7 @@ class OLSConfig(BaseModel):
 
     extra_ca: list[FilePath] = []
     certificate_directory: Optional[str] = None
+    customize: Optional[str] = None
 
     def __init__(
         self, data: Optional[dict] = None, ignore_missing_certs: bool = False
@@ -932,6 +933,7 @@ class OLSConfig(BaseModel):
         self.certificate_directory = data.get(
             "certificate_directory", constants.DEFAULT_CERTIFICATE_DIRECTORY
         )
+        self.customize = data.get('customize')
 
     def __eq__(self, other: object) -> bool:
         """Compare two objects for equality."""
