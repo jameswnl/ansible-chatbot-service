@@ -20,6 +20,7 @@ from ols.app.models.models import (
     ReferencedDocument,
     SummarizerResponse,
 )
+from ols.customize import prompts
 from ols.src.llms.llm_loader import LLMConfigurationError
 from ols.utils import suid
 from ols.utils.errors_parsing import DEFAULT_ERROR_MESSAGE

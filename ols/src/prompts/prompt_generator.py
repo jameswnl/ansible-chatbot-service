@@ -9,7 +9,6 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
 )
 
-from ols import config
 from ols.constants import ModelFamily
 from ols.customize import prompts
 

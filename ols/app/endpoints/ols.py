@@ -36,7 +36,6 @@ from ols.utils import errors_parsing, suid
 from ols.utils.auth_dependency import AuthDependency
 from ols.utils.token_handler import PromptTooLongError
 
-
 logger = logging.getLogger(__name__)
 
 router = APIRouter(tags=["query"])
