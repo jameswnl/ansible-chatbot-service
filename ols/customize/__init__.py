@@ -1,7 +1,7 @@
-"""OpenShift Lightspeed service."""
+import os
+import importlib
 
-from ols.utils.config import config
+project = os.getenv('PROJECT')
+customize = importlib.import_module(project)
 
-# make config submodule easily importable by using
-# from ols import config
-__all__ = ["config"]
+__all__ = []
