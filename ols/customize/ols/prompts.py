@@ -14,6 +14,12 @@ from ols.constants import SUBJECT_ALLOWED, SUBJECT_REJECTED
 # but that is not done as granite was adding role tags like `Human:` in the response.
 # With PromptTemplate, we have more control how we want to structure the prompt.
 
+# Default responses
+INVALID_QUERY_RESP = (
+    "Hi, I'm the OpenShift Lightspeed assistant, I can help you with questions about OpenShift, "
+    "please ask me a question related to OpenShift."
+)
+
 QUERY_SYSTEM_INSTRUCTION = """
 You are OpenShift Lightspeed - an intelligent assistant for question-answering tasks \
 related to the OpenShift container orchestration platform.
@@ -30,12 +36,6 @@ Here are some basic facts about OpenShift:
 - The latest version of OpenShift is 4.16.
 - OpenShift is a distribution of Kubernetes. Everything Kubernetes can do, OpenShift can do and more.
 """
-
-# Default responses
-INVALID_QUERY_RESP = (
-    "Hi, I'm the OpenShift Lightspeed assistant, I can help you with questions about OpenShift, "
-    "please ask me a question related to OpenShift."
-)
 
 USE_CONTEXT_INSTRUCTION = """
 Use the retrieved document to answer the question.

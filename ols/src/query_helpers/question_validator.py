@@ -9,9 +9,9 @@ from langchain.prompts import PromptTemplate
 from ols import config
 from ols.app.metrics import TokenMetricUpdater
 from ols.constants import SUBJECT_REJECTED, GenericLLMParameters
-from ols.src.prompts.prompts import QUESTION_VALIDATOR_PROMPT_TEMPLATE
 from ols.src.query_helpers.query_helper import QueryHelper
 from ols.utils.token_handler import TokenHandler
+from ols.customize import prompts
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ class QuestionValidator(QueryHelper):
         logger.info(f"{conversation_id} call settings: {settings_string}")
 
         prompt_instructions = PromptTemplate.from_template(
-            QUESTION_VALIDATOR_PROMPT_TEMPLATE
+            prompts.QUESTION_VALIDATOR_PROMPT_TEMPLATE
         )
 
         bare_llm = self.llm_loader(self.provider, self.model, self.generic_llm_params)

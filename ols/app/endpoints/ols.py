@@ -27,6 +27,7 @@ from ols.app.models.models import (
     SummarizerResponse,
     UnauthorizedResponse,
 )
+from ols.customize import prompts, keywords
 from ols.src.llms.llm_loader import LLMConfigurationError, resolve_provider_config
 from ols.src.query_helpers.attachment_appender import append_attachments_to_query
 from ols.src.query_helpers.docs_summarizer import DocsSummarizer
@@ -35,16 +36,6 @@ from ols.utils import errors_parsing, suid
 from ols.utils.auth_dependency import AuthDependency
 from ols.utils.token_handler import PromptTooLongError
 
-import importlib
-customize_package = 'ols.utils.keywords'
-if config.ols_config.customize:
-    keywords = importlib.import_module(f"{config.ols_config.customize}.keywords")
-    prompts = importlib.import_module(f"{config.ols_config.customize}.prompts")
-    print(f'customized: {prompts.INVALID_QUERY_RESP}')
-else:
-    keywords = importlib.import_module('ols.utils.keywords')
-    prompts = importlib.import_module('ols.src.prompts.prompts')
-    print(f'NOT-customized: {prompts.INVALID_QUERY_RESP}')
 
 logger = logging.getLogger(__name__)
 

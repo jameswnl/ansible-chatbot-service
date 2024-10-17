@@ -651,7 +651,7 @@ def test_conversation_request(
     mock_validate_question.return_value = False
     llm_request = LLMRequest(query="Generate a yaml")
     response = ols.conversation_request(llm_request, auth)
-    assert response.response == constants.INVALID_QUERY_RESP
+    assert response.response == prompts.INVALID_QUERY_RESP
     assert suid.check_suid(
         response.conversation_id
     ), "Improper conversation ID returned"
@@ -738,7 +738,7 @@ def test_question_validation_in_conversation_start(auth):
 
     response = ols.conversation_request(llm_request, auth)
 
-    assert response.response.startswith(constants.INVALID_QUERY_RESP)
+    assert response.response.startswith(prompts.INVALID_QUERY_RESP)
 
 
 @pytest.mark.usefixtures("_load_config")
@@ -778,7 +778,7 @@ def test_conversation_request_invalid_subject(mock_validate, auth):
 
     mock_validate.return_value = False
     response = ols.conversation_request(llm_request, auth)
-    assert response.response == constants.INVALID_QUERY_RESP
+    assert response.response == prompts.INVALID_QUERY_RESP
     assert len(response.referenced_documents) == 0
     assert not response.truncated
 
